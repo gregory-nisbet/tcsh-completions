@@ -30,6 +30,6 @@ For the completers that get factored out into external scripts, I think I am goi
 
 The completer in git-contrib as actually somewhat primitive and doesn't consider `COMP_POINT` at all and just completes the last word, which
 
-I could also do a 'bag of words' autocompleter for git that looks at the 
+I could also do a 'bag of words' autocompleter for git that looks at all the options entered so far and attempts to determine which one is "incomplete" and then offer suggestions based on that. This autocompleter would ignore the position of the cursor as well as the order of arguments.
 
 one option to make completion a little more intuitive for git would be to autocomplete options beginning with `--` to an option that directly applies to the git command 
