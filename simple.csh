@@ -51,10 +51,3 @@ complete uncomplete 'p/*/X/'
 # rm (from https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxa500/tcshcomplete.htm)
 # don't delete source files
 complete rm 'p/*/f:^'"$source_file"'/'
-
-# source additional completions
-set completions_dir = $HOME/tcsh-completions
-set completions_file = $completions_dir/completions.csh
-if (-f $completions_file) then
-    source $completions_file
-endif
