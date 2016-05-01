@@ -120,6 +120,21 @@ bindkey "^R" i-search-back
 bindkey "^[[5~" history-search-backward
 bindkey "^[[6~" history-search-forward
 
+# /usr/local/bin
+if (-d "/usr/local/bin") then
+    setenv PATH "/usr/local/bin:""$PATH"
+endif
+
+# /usr/local/sbin
+if (-d "/usr/local/sbin") then
+    setenv PATH "/usr/local/sbin:""$PATH"
+endif
+
+# add opt local bin for opt stuff
+if (-d "/opt/local/bin") then
+    setenv PATH "/opt/local/bin:""$PATH"
+endif
+
 # add bin directory if it isn't already added to the path
 if ( -d "$HOME"/bin ) then
     setenv PATH "$HOME"/bin:"$PATH"

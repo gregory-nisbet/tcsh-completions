@@ -51,3 +51,7 @@ complete uncomplete 'p/*/X/'
 # rm (from https://www.ibm.com/support/knowledgecenter/SSLTBW_2.1.0/com.ibm.zos.v2r1.bpxa500/tcshcomplete.htm)
 # don't delete source files
 complete rm 'p/*/f:^'"$source_file"'/'
+
+# vi everything but .o, .a, .pyc
+complete vi 'p/*/f:^*.{o,a,pyc}/'
+complete vim 'p/*/f:^*.{o,a,pyc}/'
