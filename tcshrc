@@ -1,0 +1,131 @@
+# path to this directory
+set tcshdir = $HOME/tcsh-completions
+
+# useful stuff:
+# http://unix.t-a-y-l-o-r.com/ULcshrc.html
+
+# csh does not have the ability to trap signals other than INT
+# weirdly enough
+# this value makes ctrl-c do nothing.
+# I like to use ctrl-c to abandon a command so I'm not using it
+# onintr -
+
+# I want the pretty '>' and '#' default on
+# OS X; this does sort of make the prompt
+# look too much like bash though
+unset promptchars
+
+# set the editor to vi if there is a vi
+# vi is usually provided by vim but I might be on an old-school
+# system someday
+if (-f /usr/bin/vi) then
+    setenv EDITOR /usr/bin/vi
+    setenv VISUAL /usr/bin/vi
+    setenv SUDO_EDITOR /usr/bin/vi
+endif
+
+# detect interactive shell
+if ($?prompt) then
+    :
+else
+    goto END
+endif
+
+# this is a glob for probable source files
+set source_extensions = ( \
+    c h cc C tex 1 man l y \
+    py pl php sh bash groovy java \
+    rb go hs lhs ml\
+)
+
+# build up the glob
+# unforunately these glob leaves an extra comma at the end
+set source_file = '*.{'
+foreach item ($source_extensions)
+    set source_file = "$source_file""$item"','
+end
+set source_file = "$source_file"'}'
+
+# don't overwrite existing files
+# set noclobber
+
+# highlight in i searches
+set highlight
+
+# remember a whole bunch of history
+set history = 100000
+set savehist = 100000
+# histdup
+# here are the values 
+# 'all' < only unique entries
+# 'prev' < not sure, here is the exact description from tcsh.org
+# If set to `prev' and the last history event is the
+# same as the current command, then the current command is not entered in the history.
+set histdup = erase
+
+# tcsh has a kill ring with similar features to
+# the history, let's enableit
+set killdup = erase
+# thirty is the default, but let's set it explictly anyway
+set killring = 30
+
+# set the completion mode to enhance, ignores case and considers
+# -_. to be equivalent word separators
+# set complete = enhance
+
+# I don't want filec since escape 
+# shouldn't do what tab does
+# don't set filec
+
+# tcsh makes too much noise on empty file completion
+set nobeep
+
+# do not expand wilcards and such when there is no match
+# behaves like bourne shell
+# I think this is the behavior we want for an interactive shell
+set nonomatch
+
+# print the exit value if there it is not zero
+set printexitvalue
+
+# useful configuration setting from Ubuntu's /etc/csh.cshrc 
+# file
+# %U %m %u underlined machine name 
+# %B %~ %b bolded current working directory
+# %# appropriate final prompt character
+set prompt='%U%m%u:%B%~%b%# '
+
+# helpful recommendations for colorful tcsh prompting from
+# http://www.tcsh.org/TipsAndTricks
+set autolist
+set color
+set colorcat
+
+# another helpful recommendation from Ubuntu's
+# /etc/csh.cshrc
+set autoexpand
+
+# compatibility section, taken from
+# Ubuntu (Debian?) /etc/csh.cshrc
+bindkey "^[[1~" beginning-of-line # home key
+bindkey "^[[7~" beginning-of-line # home urxvt
+bindkey "^[[2~" overwrite-mode # insert
+bindkey "^[[4~" end-of-line # end
+bindkey "^[[8~" end-of-line # end rxvt 
+# tcsh delete does not delete on Mac OS X
+bindkey "^[[3~" delete-char
+# tcsh reverse history search
+bindkey "^R" i-search-back
+# note that i-search-fwd is unbound
+bindkey "^[[5~" history-search-backward
+bindkey "^[[6~" history-search-forward
+
+# add bin directory if it isn't already added to the path
+if ( -d "$HOME"/bin ) then
+    setenv PATH "$HOME"/bin:"$PATH"
+endif
+
+source $tcshdir/autoload.csh
+
+END:
+# end of program
