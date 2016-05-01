@@ -4,6 +4,7 @@ set csh_files = (\
     git.csh \
     languages.csh \
     simple.csh \
+    find.csh \
 )
 
 foreach csh_file ($csh_files)
