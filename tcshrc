@@ -120,27 +120,48 @@ bindkey "^R" i-search-back
 bindkey "^[[5~" history-search-backward
 bindkey "^[[6~" history-search-forward
 
+# this path is fairly standard based on Ubuntu and OS X
+
+set path = ( \
+	$HOME/bin \
+    /opt/local/bin \
+	/usr/local/sbin \
+	/usr/local/bin \
+	/usr/bin \
+	/bin \
+	/usr/sbin \
+	/sbin \
+	/usr/local/bin \
+	/opt/X11/bin \
+	/Library/TeX/texbin \
+	/usr/games \
+	/usr/local/games \
+)
+
 # /usr/local/bin
-if (-d "/usr/local/bin") then
-    setenv PATH "/usr/local/bin:""$PATH"
-endif
+# if (-d "/usr/local/bin") then
+#    setenv PATH "/usr/local/bin:""$PATH"
+# endif
 
 # /usr/local/sbin
-if (-d "/usr/local/sbin") then
-    setenv PATH "/usr/local/sbin:""$PATH"
-endif
+# if (-d "/usr/local/sbin") then
+#    setenv PATH "/usr/local/sbin:""$PATH"
+# endif
 
 # add opt local bin for opt stuff
-if (-d "/opt/local/bin") then
-    setenv PATH "/opt/local/bin:""$PATH"
-endif
+# if (-d "/opt/local/bin") then
+#     setenv PATH "/opt/local/bin:""$PATH"
+# endif
 
 # add bin directory if it isn't already added to the path
-if ( -d "$HOME"/bin ) then
-    setenv PATH "$HOME"/bin:"$PATH"
-endif
+# if ( -d "$HOME"/bin ) then
+#     setenv PATH "$HOME"/bin:"$PATH"
+# endif
 
 source $tcshdir/autoload.csh
 
 END:
 # end of program
+
+# OPAM configuration
+source /Users/gregory.nisbet/.opam/opam-init/init.csh >& /dev/null || true

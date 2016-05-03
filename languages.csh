@@ -18,7 +18,7 @@ complete sh 'p/1/f:*.sh/'
 # for some reason 'c/-/(--version -f -b -c)' will
 # autocomplete the --
 complete tcsh \
-    'C/-/(-version f b c)/' \
+    'c/-/(--version -f -b -c)/' \
     'n/-b/f:{*.csh, *.tcsh}/' \
     'p/1/f:{*.csh, *.tcsh}/'
 
