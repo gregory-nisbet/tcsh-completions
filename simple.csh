@@ -2,7 +2,8 @@
 # useful resources
 # https://github.com/sean-/cshrc (no explicit license)
 # https://sourceforge.net/projects/tcshrc/ (GPL v2)
-complete -%*        c/%/j/
+complete '-%*'        'c/%/j/'
+complete {fg,bg,stop} 'c/%/j/' 'p/1/"(%)"/'
 complete chown      'p/1/u/'
 
 # http://hea-www.harvard.edu/~fine/Tech/tcsh.html
