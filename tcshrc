@@ -121,17 +121,17 @@ bindkey "^[[5~" history-search-backward
 bindkey "^[[6~" history-search-forward
 
 # this path is fairly standard based on Ubuntu and OS X
+# except for /usr/local/brew/bin
 
 set path = ( \
 	$HOME/bin \
-    /opt/local/bin \
+    /usr/local/brew/bin \
 	/usr/local/sbin \
 	/usr/local/bin \
 	/usr/bin \
 	/bin \
 	/usr/sbin \
 	/sbin \
-	/usr/local/bin \
 	/opt/X11/bin \
 	/Library/TeX/texbin \
 	/usr/games \
@@ -162,6 +162,3 @@ source $tcshdir/autoload.csh
 
 END:
 # end of program
-
-# OPAM configuration
-source /Users/gregory.nisbet/.opam/opam-init/init.csh >& /dev/null || true
