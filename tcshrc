@@ -63,6 +63,9 @@ set savehist = 100000
 # same as the current command, then the current command is not entered in the history.
 set histdup = erase
 
+# notify asynchronously
+set notify
+
 # tcsh has a kill ring with similar features to
 # the history, let's enableit
 set killdup = erase

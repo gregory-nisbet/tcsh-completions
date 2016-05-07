@@ -8,7 +8,10 @@ complete chown      'p/1/u/'
 # http://hea-www.harvard.edu/~fine/Tech/tcsh.html
 complete cd 'C/*/d/'
 complete rmdir 'C/*/d/'
-complete ls 'C/*/d/'
+# we want to show the files as well
+# after -la, for instance so only 
+# complete in the first position
+complete ls 'C/1/d/'
 
 # signal names
 complete kill 'c/-/S/' 'p/1/(-)//'
