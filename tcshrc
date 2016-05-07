@@ -119,6 +119,9 @@ bindkey "^R" i-search-back
 # note that i-search-fwd is unbound
 bindkey "^[[5~" history-search-backward
 bindkey "^[[6~" history-search-forward
+# cocoa word movement
+bindkey "^[^[[D" backward-word
+bindkey "^[^[[C" forward-word
 
 # this path is fairly standard based on Ubuntu and OS X
 # except for /usr/local/brew/bin
