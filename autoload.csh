@@ -5,6 +5,7 @@ set csh_files = (\
     languages.csh \
     simple.csh \
     find.csh \
+    ocamlfind.csh \
 )
 
 foreach csh_file ($csh_files)
