@@ -11,7 +11,7 @@ endif
 # aliases from Fedora:
 # generally I do not like these things
 # to be colorful
-alias l. ls -d '.*' "$color_auto"
+alias l. ls -d "$color_auto" '.*'
 alias ll ls -l
 alias lr '( ls -lAtrF | tail -n 20 )'
 alias lrr ls -lAtrF
