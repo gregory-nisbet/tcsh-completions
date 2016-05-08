@@ -52,6 +52,8 @@ set source_file = "$source_file"'}'
 # highlight in i searches
 set highlight
 
+# dedicated .tcsh_history
+set histfile = ~/.tcsh_history
 # remember a whole bunch of history
 set history = 100000
 set savehist = 100000
