@@ -11,6 +11,8 @@ alias __autoload \
     source '$tcshdir/\!:1.csh ' ';' \
     'if ($?__autoload_debug) echo \!:1'
 
+set noglob
+
 __autoload aliases
 __autoload completions
 __autoload git 
@@ -18,3 +20,5 @@ __autoload languages
 __autoload simple
 __autoload find
 __autoload ocamlfind
+
+unset noglob

@@ -58,3 +58,6 @@ complete rm 'p/*/f:^'"$source_file"'/'
 # vi everything but .o, .a, .pyc
 complete vi 'p/*/f:^*.{o,a,pyc}/'
 complete vim 'p/*/f:^*.{o,a,pyc}/'
+
+# repeat complete position 2 to commands
+complete repeat 'p/2/c/'

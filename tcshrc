@@ -18,10 +18,13 @@ unset promptchars
 # set the editor to vi if there is a vi
 # vi is usually provided by vim but I might be on an old-school
 # system someday
-if (-f /usr/bin/vi) then
-    setenv EDITOR /usr/bin/vi
-    setenv VISUAL /usr/bin/vi
-    setenv SUDO_EDITOR /usr/bin/vi
+setenv EDITOR /usr/bin/vi
+setenv VISUAL /usr/bin/vi
+setenv SUDO_EDITOR /usr/bin/vi
+if (-f /usr/local/bin/vim) then
+    setenv EDITOR /usr/local/bin/vim
+    setenv VISUAL /usr/local/bin/vim
+    setenv SUDO_EDITOR /usr/local/bin/vim
 endif
 
 # detect interactive shell
@@ -56,7 +59,11 @@ set highlight
 set histfile = ~/.tcsh_history
 # remember a whole bunch of history
 set history = 100000
-set savehist = 100000
+# keep 100000 lines of history
+# merge the history together
+# lock the history file to prevent simultaneous tcshs
+# from saving history
+set savehist = (100000 merge lock)
 # histdup
 # here are the values 
 # 'all' < only unique entries
@@ -127,6 +134,8 @@ bindkey "^[[6~" history-search-forward
 # cocoa word movement
 bindkey "^[^[[D" backward-word
 bindkey "^[^[[C" forward-word
+bindkey "^[^[[A" beginning-of-line
+bindkey "^[^[[B" end-of-line
 
 # this path is fairly standard based on Ubuntu and OS X
 # except for /usr/local/brew/bin
@@ -167,6 +176,8 @@ set path = ( \
 # endif
 
 source $tcshdir/autoload.csh
+
+set unhash
 
 END:
 # end of program
