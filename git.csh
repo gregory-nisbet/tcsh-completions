@@ -99,9 +99,11 @@ set git_add_options = (\
 
 # determine which branches are currently active in the cwd.
 # `git rev-parse` determines whether we are in
-alias __git_branches 'git rev-parse >& /dev/null && ( git branch --color=never | cut -c 3- )'
+alias __git_is_git 'git rev-parse >& /dev/null'
+alias __git_branches '__git_is_git && ( git branch --color=never | cut -c 3- )'
 
 complete git \
     'n/checkout/`__git_branches`/' \
+    'n/status/(-v)/' \
     'p/1/$git_completion_commands/' \
     'C/-/$git_main_options/'
