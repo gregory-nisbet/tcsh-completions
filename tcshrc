@@ -177,7 +177,9 @@ set path = ( \
 
 source $tcshdir/autoload.csh
 
-set unhash
+# this disables the internal hash table.
+# actually I think I want it most of the time
+# set unhash
 
 END:
 # end of program
