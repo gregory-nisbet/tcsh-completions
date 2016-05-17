@@ -26,3 +26,7 @@ alias etc 'cd /etc'
 alias opt 'cd /opt'
 # navigate to usr's opt
 alias uopt 'cd ; cd opt'
+
+# quiet find
+alias findq \
+    'sh -c '"'"'find "$@" 2>/dev/null'"'"' find'
