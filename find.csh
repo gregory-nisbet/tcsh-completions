@@ -6,8 +6,8 @@ complete find \
     'n/-{,n}cpio/f/' \
     'n/-exec/c/' \
     'n/-ok/c/' \
-    'n/-user/u' \
-    'n/-group/g' \
+    'n/-user/u/' \
+    'n/-group/g/' \
     c/-/"(fstype name perm prune type user nouser \
         group nogroup size inum atime mtime ctime exec \
         ok print ls cpio ncpio newer xdev depth \
