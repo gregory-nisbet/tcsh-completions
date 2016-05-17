@@ -143,20 +143,27 @@ bindkey "^[^[[B" end-of-line
 # this path is fairly standard based on Ubuntu and OS X
 # except for /usr/local/brew/bin
 
-set path = ( \
-	$HOME/bin \
-    /usr/local/brew/bin \
-	/usr/local/sbin \
-	/usr/local/bin \
-	/usr/bin \
-	/bin \
-	/usr/sbin \
-	/sbin \
-	/opt/X11/bin \
-	/Library/TeX/texbin \
-	/usr/games \
-	/usr/local/games \
-)
+# there is some weirdness going on with duplication in where
+# e.g.
+# % where bash
+# > /bin/bash
+# > /bin/bash
+if (1) then
+    set path = ( \
+        $HOME/bin \
+        /usr/local/brew/bin \
+        /usr/local/sbin \
+        /usr/local/bin \
+        /usr/bin \
+        /bin \
+        /usr/sbin \
+        /sbin \
+        /opt/X11/bin \
+        /Library/TeX/texbin \
+        /usr/games \
+        /usr/local/games \
+    )
+endif
 
 # /usr/local/bin
 # if (-d "/usr/local/bin") then

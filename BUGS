@@ -1,0 +1,7 @@
+there is some weirdness going on with duplication in where
+e.g.
+% where bash
+ > /bin/bash
+ > /bin/bash
+
+cannot reproduce with `tcsh -f`
