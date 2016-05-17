@@ -20,5 +20,6 @@ __autoload languages
 __autoload simple
 __autoload find
 __autoload ocamlfind
+__autoload brew
 
 unset noglob

@@ -49,8 +49,11 @@ foreach item ($source_extensions)
 end
 set source_file = "$source_file"'}'
 
+# rehash whenever you find something
+set autorehash
+
 # don't overwrite existing files
-# set noclobber
+set noclobber
 
 # highlight in i searches
 set highlight
@@ -73,7 +76,7 @@ set savehist = (100000 merge lock)
 set histdup = erase
 
 # notify asynchronously
-set notify
+# set notify
 
 # tcsh has a kill ring with similar features to
 # the history, let's enableit
@@ -83,7 +86,7 @@ set killring = 30
 
 # set the completion mode to enhance, ignores case and considers
 # -_. to be equivalent word separators
-# set complete = enhance
+set complete = enhance
 
 # I don't want filec since escape 
 # shouldn't do what tab does
@@ -180,6 +183,12 @@ source $tcshdir/autoload.csh
 # this disables the internal hash table.
 # actually I think I want it most of the time
 # set unhash
+
+# this is potentially related to a weird tcsh bug
+# check if there's an opam file and source it if necessary
+# if (-f $HOME/.opam_tcshrc) then
+#    source $HOME/.opam_tcshrc
+# endif
 
 END:
 # end of program
