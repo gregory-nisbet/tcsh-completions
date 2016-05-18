@@ -38,3 +38,7 @@ alias gitlog \
 # show the last 40 lines of git log with everything
 alias gitlogv \
     'git log | head -n 40'
+
+# docker machine env format for csh
+alias docker-machine-env-csh \
+    "$tcshdir"/docker-machine-env-csh
