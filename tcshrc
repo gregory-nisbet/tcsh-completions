@@ -190,6 +190,9 @@ set newpath = "$newpath":/usr/local/games
 
 setenv PATH "$newpath"
 
+# enable backslash_quote
+set backslash_quote
+
 # /usr/local/bin
 # if (-d "/usr/local/bin") then
 #    setenv PATH "/usr/local/bin:""$PATH"
