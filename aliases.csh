@@ -30,3 +30,11 @@ alias uopt 'cd ; cd opt'
 # quiet find
 alias findq \
     'sh -c '"'"'find "$@" 2>/dev/null'"'"' find'
+
+# show the last 20 lines of git log.
+alias gitlog \
+    'git log | grep -v ^commit | head -n 20'
+
+# show the last 40 lines of git log with everything
+alias gitlogv \
+    'git log | head -n 40'

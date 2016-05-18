@@ -148,22 +148,37 @@ bindkey "^[^[[B" end-of-line
 # % where bash
 # > /bin/bash
 # > /bin/bash
-if (1) then
-    set path = ( \
-        $HOME/bin \
-        /usr/local/brew/bin \
-        /usr/local/sbin \
-        /usr/local/bin \
-        /usr/bin \
-        /bin \
-        /usr/sbin \
-        /sbin \
-        /opt/X11/bin \
-        /Library/TeX/texbin \
-        /usr/games \
-        /usr/local/games \
-    )
-endif
+#if (1) then
+    #set path = ( \
+        #$HOME/bin \
+        #/usr/local/brew/bin \
+        #/usr/local/sbin \
+        #/usr/local/bin \
+        #/usr/bin \
+        #/bin \
+        #/usr/sbin \
+        #/sbin \
+        #/opt/X11/bin \
+        #/Library/TeX/texbin \
+        #/usr/games \
+        #/usr/local/games \
+    #)
+#endif
+
+set newpath = "$HOME/bin"
+set newpath = "$newpath":/usr/local/brew/bin
+set newpath = "$newpath":/usr/local/sbin
+set newpath = "$newpath":/usr/local/bin
+set newpath = "$newpath":/usr/bin
+set newpath = "$newpath":/bin
+set newpath = "$newpath":/usr/sbin
+set newpath = "$newpath":/sbin
+set newpath = "$newpath":/opt/X11/bin
+set newpath = "$newpath":/Library/TeX/texbin
+set newpath = "$newpath":/usr/games
+set newpath = "$newpath":/usr/local/games
+
+setenv PATH "$newpath"
 
 # /usr/local/bin
 # if (-d "/usr/local/bin") then
