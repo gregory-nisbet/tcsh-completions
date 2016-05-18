@@ -1,6 +1,8 @@
 # path to this directory
 set tcshdir = $HOME/tcsh-completions
 
+#goto END
+
 # useful stuff:
 # http://unix.t-a-y-l-o-r.com/ULcshrc.html
 
@@ -27,6 +29,8 @@ if (-f /usr/local/bin/vim) then
     setenv SUDO_EDITOR /usr/local/bin/vim
 endif
 
+# goto END
+
 # detect interactive shell
 if ($?prompt) then
     :
@@ -50,13 +54,19 @@ end
 set source_file = "$source_file"'}'
 
 # rehash whenever you find something
-set autorehash
+if (`$tcshdir/version-compare $tcsh 6.19` == 'LT') then
+    :
+else
+    set autorehash
+endif
 
 # don't overwrite existing files
 set noclobber
 
 # highlight in i searches
 set highlight
+
+# goto END
 
 # dedicated .tcsh_history
 set histfile = ~/.tcsh_history

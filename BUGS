@@ -1,3 +1,7 @@
+SOLVED:
+
+6.18 autorehash bug
+
 there is some weirdness going on with duplication in where
 e.g.
 % where bash
