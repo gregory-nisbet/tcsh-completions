@@ -1,0 +1,10 @@
+#!/usr/bin/awk -f
+
+# this thing doesn't work because awk doesn't capture its groups.
+# or something like that.
+
+/^export/ {
+    r = $0
+    sub(/export ([^=]*)=(.*)/, "setenv \1 \2", r)
+    print r
+}

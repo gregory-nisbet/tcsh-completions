@@ -1,0 +1,16 @@
+OPEN:
+
+git handle detached head and other various states better
+in autocompletion
+
+export-to-csh does not work
+
+SOLVED:
+
+6.18.01 autorehash bug (OS X)
+
+there is some weirdness going on with duplication in where
+e.g.
+% where bash
+ > /bin/bash
+ > /bin/bash

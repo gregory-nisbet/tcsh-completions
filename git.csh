@@ -97,6 +97,14 @@ set git_add_options = (\
 # we complete based on options first 
 # after add complete the flags
 
+# determine which branches are currently active in the cwd.
+# `git rev-parse` determines whether we are in a git repository
+# there's another issue here which is lines like (HEAD detached at upstream/master) which should be mapped to upstream master but is currently filtered out for whitespace reasons
+alias __git_is_git 'git rev-parse >& /dev/null'
+alias __git_branches '__git_is_git && ( git branch --color=never | cut -c 3- | grep -v \'^(\')'
+
 complete git \
-    'C/-/$git_main_options/' \
-    'p/1/$git_completion_commands/'
+    'n/checkout/`__git_branches`/' \
+    'n/status/(-v)/' \
+    'p/1/$git_completion_commands/' \
+    'C/-/$git_main_options/'

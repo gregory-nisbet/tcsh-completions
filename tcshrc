@@ -1,6 +1,8 @@
 # path to this directory
 set tcshdir = $HOME/tcsh-completions
 
+#goto END
+
 # useful stuff:
 # http://unix.t-a-y-l-o-r.com/ULcshrc.html
 
@@ -18,11 +20,16 @@ unset promptchars
 # set the editor to vi if there is a vi
 # vi is usually provided by vim but I might be on an old-school
 # system someday
-if (-f /usr/bin/vi) then
-    setenv EDITOR /usr/bin/vi
-    setenv VISUAL /usr/bin/vi
-    setenv SUDO_EDITOR /usr/bin/vi
+setenv EDITOR /usr/bin/vi
+setenv VISUAL /usr/bin/vi
+setenv SUDO_EDITOR /usr/bin/vi
+if (-f /usr/local/bin/vim) then
+    setenv EDITOR /usr/local/bin/vim
+    setenv VISUAL /usr/local/bin/vim
+    setenv SUDO_EDITOR /usr/local/bin/vim
 endif
+
+# goto END
 
 # detect interactive shell
 if ($?prompt) then
@@ -46,15 +53,30 @@ foreach item ($source_extensions)
 end
 set source_file = "$source_file"'}'
 
+# rehash whenever you find something
+if (`$tcshdir/version-compare $tcsh 6.19` == 'LT') then
+    :
+else
+    set autorehash
+endif
+
 # don't overwrite existing files
-# set noclobber
+set noclobber
 
 # highlight in i searches
 set highlight
 
+# goto END
+
+# dedicated .tcsh_history
+set histfile = ~/.tcsh_history
 # remember a whole bunch of history
 set history = 100000
-set savehist = 100000
+# keep 100000 lines of history
+# merge the history together
+# lock the history file to prevent simultaneous tcshs
+# from saving history
+set savehist = (100000 merge lock)
 # histdup
 # here are the values 
 # 'all' < only unique entries
@@ -62,6 +84,9 @@ set savehist = 100000
 # If set to `prev' and the last history event is the
 # same as the current command, then the current command is not entered in the history.
 set histdup = erase
+
+# notify asynchronously
+# set notify
 
 # tcsh has a kill ring with similar features to
 # the history, let's enableit
@@ -71,7 +96,7 @@ set killring = 30
 
 # set the completion mode to enhance, ignores case and considers
 # -_. to be equivalent word separators
-# set complete = enhance
+set complete = enhance
 
 # I don't want filec since escape 
 # shouldn't do what tab does
@@ -119,13 +144,86 @@ bindkey "^R" i-search-back
 # note that i-search-fwd is unbound
 bindkey "^[[5~" history-search-backward
 bindkey "^[[6~" history-search-forward
+# cocoa word movement
+bindkey "^[^[[D" backward-word
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[A" beginning-of-line
+bindkey "^[^[[B" end-of-line
+
+# this path is fairly standard based on Ubuntu and OS X
+# except for /usr/local/brew/bin
+
+# there is some weirdness going on with duplication in where
+# e.g.
+# % where bash
+# > /bin/bash
+# > /bin/bash
+#if (1) then
+    #set path = ( \
+        #$HOME/bin \
+        #/usr/local/brew/bin \
+        #/usr/local/sbin \
+        #/usr/local/bin \
+        #/usr/bin \
+        #/bin \
+        #/usr/sbin \
+        #/sbin \
+        #/opt/X11/bin \
+        #/Library/TeX/texbin \
+        #/usr/games \
+        #/usr/local/games \
+    #)
+#endif
+
+set newpath = "$HOME/bin"
+set newpath = "$newpath":/usr/local/brew/bin
+set newpath = "$newpath":/usr/local/sbin
+set newpath = "$newpath":/usr/local/bin
+set newpath = "$newpath":/usr/bin
+set newpath = "$newpath":/bin
+set newpath = "$newpath":/usr/sbin
+set newpath = "$newpath":/sbin
+set newpath = "$newpath":/opt/X11/bin
+set newpath = "$newpath":/Library/TeX/texbin
+set newpath = "$newpath":/usr/games
+set newpath = "$newpath":/usr/local/games
+
+setenv PATH "$newpath"
+
+# enable backslash_quote
+set backslash_quote
+
+# /usr/local/bin
+# if (-d "/usr/local/bin") then
+#    setenv PATH "/usr/local/bin:""$PATH"
+# endif
+
+# /usr/local/sbin
+# if (-d "/usr/local/sbin") then
+#    setenv PATH "/usr/local/sbin:""$PATH"
+# endif
+
+# add opt local bin for opt stuff
+# if (-d "/opt/local/bin") then
+#     setenv PATH "/opt/local/bin:""$PATH"
+# endif
 
 # add bin directory if it isn't already added to the path
-if ( -d "$HOME"/bin ) then
-    setenv PATH "$HOME"/bin:"$PATH"
-endif
+# if ( -d "$HOME"/bin ) then
+#     setenv PATH "$HOME"/bin:"$PATH"
+# endif
 
 source $tcshdir/autoload.csh
+
+# this disables the internal hash table.
+# actually I think I want it most of the time
+# set unhash
+
+# this is potentially related to a weird tcsh bug
+# check if there's an opam file and source it if necessary
+# if (-f $HOME/.opam_tcshrc) then
+#    source $HOME/.opam_tcshrc
+# endif
 
 END:
 # end of program

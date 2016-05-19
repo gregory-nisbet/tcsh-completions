@@ -9,7 +9,10 @@ complete chown      'p/1/u/'
 # http://hea-www.harvard.edu/~fine/Tech/tcsh.html
 complete cd 'C/*/d/'
 complete rmdir 'C/*/d/'
-complete ls 'C/*/d/'
+# we want to show the files as well
+# after -la, for instance so only 
+# complete in the first position
+complete ls 'C/1/d/'
 
 # signal names
 complete kill 'c/-/S/' 'p/1/(-)//'
@@ -53,9 +56,9 @@ complete uncomplete 'p/*/X/'
 # don't delete source files
 complete rm 'p/*/f:^'"$source_file"'/'
 
-# source additional completions
-set completions_dir = $HOME/tcsh-completions
-set completions_file = $completions_dir/completions.csh
-if (-f $completions_file) then
-    source $completions_file
-endif
+# vi everything but .o, .a, .pyc
+complete vi 'p/*/f:^*.{o,a,pyc}/'
+complete vim 'p/*/f:^*.{o,a,pyc}/'
+
+# repeat complete position 2 to commands
+complete repeat 'p/2/c/'

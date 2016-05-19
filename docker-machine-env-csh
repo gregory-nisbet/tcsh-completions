@@ -1,0 +1,3 @@
+#!/bin/sh
+docker-machine env | sed -e 's/export/setenv/' -e 's/=/ /' -e '$d' 
+echo '# eval `docker-machine env`'
