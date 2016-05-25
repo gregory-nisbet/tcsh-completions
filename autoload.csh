@@ -21,5 +21,6 @@ __autoload simple
 __autoload find
 __autoload ocamlfind
 __autoload brew
+__autoload waf
 
 unset noglob

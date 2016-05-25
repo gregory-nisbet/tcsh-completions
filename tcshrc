@@ -1,5 +1,14 @@
+# no interruptions until we're done loading
+onintr -
+
 # path to this directory
-set tcshdir = $HOME/tcsh-completions
+set tcshdir = $HOME/config/tcsh
+
+# nothing else touches bindkey but
+# enabling this first does not seem to work
+# enable vi mode
+# bindkey -v
+# set vimode
 
 #goto END
 
@@ -227,3 +236,7 @@ source $tcshdir/autoload.csh
 
 END:
 # end of program
+
+# source $tcshdir/enable-vi.csh
+
+onintr
