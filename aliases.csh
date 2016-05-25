@@ -42,3 +42,15 @@ alias gitlogv \
 # docker machine env format for csh
 alias docker-machine-env-csh \
     "$tcshdir"/docker-machine-env-csh
+
+# aliases for certain number of files up the directory tree
+alias .0 '.'
+alias .1 '..'
+alias .2 '../..'
+alias .3 '../../..'
+alias .4 '../../../..'
+alias .5 '../../../../..'
+alias .6 '../../../../../..'
+alias .7 '../../../../../../..'
+alias .8 '../../../../../../../..'
+alias .9 '../../../../../../../../..'

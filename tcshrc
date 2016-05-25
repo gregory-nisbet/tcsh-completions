@@ -127,7 +127,9 @@ set printexitvalue
 # %U %m %u underlined machine name 
 # %B %~ %b bolded current working directory
 # %# appropriate final prompt character
-set prompt='%U%m%u:%B%~%b%# '
+if ($TERM != "DUMB") then
+    set prompt='%U%m%u:%B%~%b%# '
+endif
 
 # helpful recommendations for colorful tcsh prompting from
 # http://www.tcsh.org/TipsAndTricks
