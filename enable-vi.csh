@@ -1,14 +1,14 @@
-bindkey -v
+# bindkey -v
 
 # compatibility section, taken from
 # Ubuntu (Debian?) /etc/csh.cshrc
-bindkey "\e[1~" beginning-of-line # home key
-bindkey "\e[7~" beginning-of-line # home urxvt
-bindkey "\e[2~" overwrite-mode # insert
-bindkey "\e[4~" end-of-line # end
-bindkey "\e[8~" end-of-line # end rxvt 
+# bindkey "\e[1~" beginning-of-line # home key
+# bindkey "\e[7~" beginning-of-line # home urxvt
+# bindkey "\e[2~" overwrite-mode # insert
+# bindkey "\e[4~" end-of-line # end
+# bindkey "\e[8~" end-of-line # end rxvt 
 
-set vimode
+# set vimode
 
 ## tcsh delete does not delete on Mac OS X
 #bindkey "^[[3~" delete-char
