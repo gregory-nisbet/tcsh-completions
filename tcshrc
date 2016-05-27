@@ -156,10 +156,10 @@ bindkey "^R" i-search-back
 bindkey "^[[5~" history-search-backward
 bindkey "^[[6~" history-search-forward
 # cocoa word movement
-bindkey "^[^[[D" backward-word
-bindkey "^[^[[C" forward-word
-bindkey "^[^[[A" beginning-of-line
-bindkey "^[^[[B" end-of-line
+# bindkey "^[^[[D" backward-word
+# bindkey "^[^[[C" forward-word
+# bindkey "^[^[[A" beginning-of-line
+# bindkey "^[^[[B" end-of-line
 
 # this path is fairly standard based on Ubuntu and OS X
 # except for /usr/local/brew/bin
